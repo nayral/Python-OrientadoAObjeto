@@ -1,0 +1,54 @@
+
+class Pessoa:
+
+        def __init__(self):
+
+          self.nome = str(input("Nome: "))
+          self.salaB = int(input("Salário: "))
+          self.num_dep = int(input("Número de dependentes: "))
+          self.imposto = 0
+          self.v_inss = 0
+          
+
+        def __repr__(self):
+          return (
+
+                  '\nNome do funcionário = ' + str(self.nome) +
+                  '\nSalário Líquido = ' + str(self.salaB) +
+                  '\nNúmero de dependentes = ' + str(self.num_dep) 
+                  
+
+
+                )
+
+        def calcula_imposto(self):
+          
+            self.imposto = (self.salaB - (200 * self.num_dep)) * 25 / 100
+
+            print("Valor do Imposto:",self.imposto)
+
+        def inss(self):
+
+            if self.salaB < 2000:
+              self.v_inss = self.salaB * 10 / 100
+            else:
+              self.v_inss = self.salaB * 14 / 100
+
+            print('Valor do INSS:', self.v_inss)
+
+        def sal_liquido(self):
+
+            self.salaB = self.salaB - self.imposto - self.v_inss
+
+            
+
+
+
+
+holerite = Pessoa()
+print("---- "* 10)
+holerite.calcula_imposto()
+holerite.inss()
+print("---- "* 10)
+holerite.sal_liquido()
+print(holerite)
